@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script>
+			function myAnimate(){
+				$("#myimg").animate({width:"100%"}, 3000);
+			}
+			function fadeIn(){
+				// 渐渐显示
+				$("#myimg").fadeIn(3000);
+				setTimeout("myAnimate()", 1000);
+			}
+			function fadeOut(){
+				// 渐渐隐藏
+				$("#myimg").fadeOut(3000);
+				setTimeout("fadeIn()", 1000);
+			}
+			function mySlideDown(){
+				// 滑行向上展开
+				$("#myimg").slideDown(3000);
+				setTimeout("fadeOut()", 1000);
+			}
+			function mySlideUp(){
+				// 滑行向上收起
+				$("#myimg").slideUp(3000);
+				setTimeout("mySlideDown()", 1000);
+			}
+			function show(){
+				$("#myimg").show();
+				setTimeout("mySlideUp()", 1000);
+			}
+			function hide(){
+				$("#myimg").hide();
+				setTimeout("show()", 1000);
+			}
+			$(function(){
+				setTimeout("hide()", 2000);
+			});
+		</script>
+	</head>
+	<body>
+		<img src="img/shop_bg.png" id="myimg" />
+	</body>
+</html>
