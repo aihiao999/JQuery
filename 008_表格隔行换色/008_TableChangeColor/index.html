@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-1.11.0.js" type="text/javascript"></script>
+		<script>
+			$(function(){
+				$("thead>tr").css("background-color", "green");
+				$("tbody>tr:even").css("background-color", "red");
+				$("tbody>tr:odd").css("background-color", "yellow");
+				
+				$("#checkAll").click(function(){
+					$("#mytbody input[type='checkbox']").prop("checked", this.checked);
+					//$("#mytbody>tr>td>input[type='checkbox']").prop("checked", this.checked);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<table border="1px" width="600px">
+			<thead>
+				<tr>
+					<td>
+						<input type="checkbox" id="checkAll" />
+					</td>
+					<td>分类ID</td>
+					<td>分类名称</td>
+					<td>分类商品</td>
+					<td>分类描述</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody id="mytbody">
+				<tr>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>1</td>
+					<td>手机数码</td>
+					<td>华为,小米,尼康</td>
+					<td>黑马数码产品质量最好</td>
+					<td>
+						<a href="#">修改</a>|<a href="#">删除</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>2</td>
+					<td>进口食品</td>
+					<td>梦龙巧克力蛋糕卷</td>
+					<td>番茄鸡肉酱意大利面</td>
+					<td><a href="#">修改</a>|<a href="#">删除</a></td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>3</td>
+					<td>电脑办公</td>
+					<td>联想,小米</td>
+					<td>笔记本特卖</td>
+					<td><a href="#">修改</a>|<a href="#">删除</a></td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>4</td>
+					<td>馋嘴零食</td>
+					<td>辣条,麻花,黄瓜</td>
+					<td>年货</td>
+					<td><a href="#">修改</a>|<a href="#">删除</a></td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>5</td>
+					<td>床上用品</td>
+					<td>床单,被套,四件套</td>
+					<td>都是套子</td>
+					<td><a href="#">修改</a>|<a href="#">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
