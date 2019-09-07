@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script>
+			function JS2JQ(){
+				var js2jq = document.getElementById("js2jq");
+				$(js2jq).html("JS 2 JQ对象成功");
+			}
+			
+			$(function(){
+				// 给mybtn按钮注册点击事件
+				$("#mybtn").click(function(){
+					var $jq2js = $("#jq2js");
+					var jq2js = $jq2js[0];
+					jq2js.innerHTML = "JQ 2 JS对象成功";
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="button" value="JS 2 JQ对象" onclick="JS2JQ()" />
+		<input type="button" value="JQ 2 JS对象" id="mybtn" />
+		<div id="js2jq">
+			这里的内容会通过js to jq来修改。
+		</div>
+		<div id="jq2js">
+			这里的内容会通过jq to js来修改。
+		</div>
+	</body>
+</html>
