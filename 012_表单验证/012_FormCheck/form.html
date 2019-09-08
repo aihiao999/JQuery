@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="css/style.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script>
+			$(function(){
+				// blur()触发、或将函数绑定到指定元素的 blur 事件
+				$(".bitian").blur(function(){
+					// 清空上一次提示的信息
+					$(this).parent().find(".formtips").remove();
+					$(this).parent().find(".high").remove();
+					
+					// 动态在必填项后面添加小红点
+					$(this).after("<font class='high'>*</font>");
+				
+					// 首先获取用户当前输入的值
+					var value = this.value;
+					 
+					if($(this).is("#username")){  // 判断是否是用户名输入项
+						if(value.length < 6){
+							$(this).parent().append("<span class='formtips onError'>用户名太短了</span>");
+						}else{
+							$(this).parent().append("<span class='formtips onSuccess'>用户名够用</span>");
+						}
+					}
+					
+					if($(this).is("#password")){  // 判断是否是密码输入项
+						if(value.length < 6){
+							$(this).parent().append("<span class='formtips onError'>密码太短了</span>");
+						}else{
+							$(this).parent().append("<span class='formtips onSuccess'>密码够用</span>");
+						}
+					}
+				}).focus(function(){
+					$(this).triggerHandler("blur");
+				}).keyup(function(){
+					$(this).triggerHandler("blur");
+				});
+				
+				// 给表单提交绑定事件
+				$("form").submit(function(){
+					// 触发所有必填项的校验
+					$(".bitian").trigger("focus");
+					// 找到错误信息的个数
+					if($(".onError").length > 0){
+						return false;
+					}
+					return true;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form action="./index.html">
+			<div>
+				用户名:<input type="text" class="bitian" id="username" />
+			</div>
+			<div>
+				密码:<input type="password" class="bitian" id="password" />
+			</div>
+			<div>
+				<input type="submit" />
+			</div>
+		</form>
+	</body>
+</html>

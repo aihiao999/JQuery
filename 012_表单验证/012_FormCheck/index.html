@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--
+			一. trigger()方法触发被选元素的指定事件类型。
+			二. triggerHandler()事件
+			1. triggerHandler()方法触发被选元素的指定事件类型。但不会执行浏览器默认动作, 也不会产生事件冒泡。
+			2. triggerHandler()方法与trigger()方法类似。不同的是它不会触发事件(比如表单提交)的默认行为, 而且只影响第一个匹配元素。
+			
+			3. 与trigger()方法相比的不同之处
+			(1). 它不会引起事件(比如表单提交)的默认行为
+			(2). .trigger()会操作jQuery对象匹配的所有元素, 而.triggerHandler()只影响第一个匹配元素。
+			(3). 由.triggerHandler()创建的事件不会在DOM树中冒泡; 如果目标元素不直接处理它们, 则不会发生任何事情。
+			(4). 该方法的返回的是事件处理函数的返回值, 而不是具有可链性的jQuery对象。此外, 如果没有处理程序被触发, 则这个方法返回undefined。
+		-->
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script>
+			var count = 0;
+			
+			$(function(){
+				// 说明一下: 这里我不明白使用trigger匹配事件的时候会执行多次
+				$(".myinput").select(function(){
+					console.log(this.value + "===" + count++);
+				});
+				
+				$("#btn1").click(function(){
+					$(".myinput").trigger("select");
+				});
+				$("#btn2").click(function(){
+					$(".myinput").triggerHandler("select");
+				});
+			});
+			
+		</script>
+	</head>
+	<body>
+		<input type="text" id="username" class="myinput" value="input your username" /> <br />
+		<input type="button" value="trigger匹配的所有元素的指定事件类型" id="btn1"/>
+		<input type="button" value="triggerHandler匹配第一个元素的指定事件类型" id="btn2"/> 
+	</body>
+</html>
