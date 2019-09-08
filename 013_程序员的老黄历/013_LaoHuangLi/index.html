@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/laohuangli.css" />
+		<script src="js/jquery-1.11.0.js" type="text/javascript"></script>
+		<script>
+			$(function(){
+				var url = "./data.json";
+				// ajax最简单异步请求网络
+				$.get(url,function(jsonArr){
+					// Math.floor() 返回小于或等于一个给定数字的最大整数。
+					// Math.random() 返回0 ~ 1的小数。
+					var goodCount = Math.floor(Math.random()*3 + 3) // 3 ~ 6条数据
+					while(goodCount > 0){ 
+						// 随机去取一条数据
+						var index = Math.floor(Math.random()*jsonArr.length)
+						var obj = jsonArr[index];
+						$(".good ul").append("<li><div class='name'>"+obj.name+"</div><div class='description'>"+obj.good+"</div></li>")
+						goodCount--;
+					}
+					
+					var badCount = Math.floor(Math.random()*3 + 2) // 2 ~ 5条数据
+					while(badCount > 0){
+						var index = Math.floor(Math.random()*jsonArr.length)
+						var obj = jsonArr[index];
+						$(".bad ul").append("<li><div class='name'>"+obj.name+"</div><div class='description'>"+obj.bad+"</div></li>")
+						badCount--;
+					}
+				},"json");
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="title">
+				程序员老黄历
+			</div>
+			<div class="good">
+				<div class="title">
+					<table>
+						<tr>
+							<td>宜</td>
+						</tr>
+					</table>
+				</div>
+				<div class="content">
+					<ul>
+
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<div class="split"></div>
+
+			<div class="bad">
+				<div class="title">
+					<table>
+						<tr>
+							<td>不宜</td>
+						</tr>
+					</table>
+				</div>
+				<div class="content">
+					<ul>
+
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</body>
+</html>
